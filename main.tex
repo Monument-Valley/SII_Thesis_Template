@@ -1,0 +1,129 @@
+% Copyright (c) 2008-2009 solvethis
+% Copyright (c) 2010-2016,2018-2019,2021 Casper Ti. Vector
+% Copyright (c) 2021 Kurapica
+% Copyright (c) 2021 iofu728
+% Copyright (c) 2025 hylz
+%
+% 当前overleaf 版本字体和格式均符合2021硕士学位论文要求
+%
+% 该版本遵循北京大学研究生学位论文写作指南2019年v2版本、北京大学硕士研究生学位论文word模板，
+% 在CasperVector/pkuthss模板的基础上针对硕士研究生学位论文格式的要求进行相应修改，
+% 遵循 LaTeX Project Public License 和 知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议
+% 如有任何疑问请在github/iofu728/pkuthss上提问或联系作者iofu728。
+%
+% hylz使用Gemini 3 Pro (Preview)基于github/iofu728/pkuthss v1.8.3进行了封面格式的修改，使其适用于上海创智学院的博士研究生开题报告。
+%
+% 此处请保留 ugly 参数，参考文献管理采用GB/T 7714-2015标准。
+% 此处使用顺序编码制，如使用著者-出版年制则更改为b7714-2015av。
+% bib引用使用基本与日常学术论文写作相同，部分略有不同，
+% 参考https://github.com/hushidong/biblatex-gb7714-2015/blob/master/example/cls-beamer.tex
+% 关键：强制 ctex 使用本仓库的字体集定义（ctex-fontset-siithss.def），
+% 避免 TeX Live 自带 ctex-fontset-mac.def 去寻找 STSong.otf/STKaiti.otf 等不存在的字体文件。
+\documentclass[UTF8,fontset=siithss,nocolorlinks,ugly]{siithss}
+
+% \usepackage[backend=biber,bibstyle=gb7714-2015,citestyle=gb7714-2015]{biblatex}
+% \usepackage[backend=biber,style=cvpr]{biblatex}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage[nottoc,notlot,notlof]{tocbibind} % 参考文献加入目录
+\usepackage{bm}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+%\usepackage[dvipsnames,table]{xcolor} % colors
+\usepackage{multirow}
+\usepackage{amsfonts} % blackboard math symbols
+\usepackage{nicefrac} % compact symbols for 1/2, etc.
+\usepackage{microtype} % microtypography
+
+% 图表等引用汉字与数字之间不加空格
+\newcommand{\Tref}[1]{表\ref{#1}}
+\newcommand{\tref}[1]{表\ref{#1}}
+\newcommand{\Eref}[1]{式(\ref{#1})}
+\newcommand{\Fref}[1]{图\ref{#1}}
+\newcommand{\Sref}[1]{第\ref{#1}节}
+\newcommand{\Aref}[1]{算法\ref{#1}}
+\newcommand{\eref}[1]{式(\ref{#1})}
+\newcommand{\fref}[1]{图\ref{#1}}
+\newcommand{\sref}[1]{第\ref{#1}节}
+
+\newcommand{\parhead}[1]{\vskip 2pt \noindent{\bfseries #1\  }}
+
+\newcommand{\ev}{{e}}
+\newcommand{\fr}{{I}}
+\newcommand{\mev}{{E}}
+\newcommand{\mfr}{{L}}
+\newcommand{\mdi}{{D}}
+\newcommand{\mcf}{{C}}
+\newcommand{\vect}[1]{{\bm{#1}}} %%Vector
+\newcommand{\vp}{\vect{p}}
+\newcommand{\ppix}{{\vp}}
+\newcommand{\tcon}{{t}}
+\newcommand{\tdis}{{\tau}}
+\newcommand{\texp}{{T}}
+\newcommand{\thres}{{c}}
+\newcommand{\opt}[1]{\mathcal{#1}} %%Operator
+\newcommand{\oF}{\opt{F}}
+\newcommand{\oL}{\opt{L}}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\text{\ding{51}}}
+\newcommand{\xmark}{\text{\ding{55}}}
+
+\definecolor{tabfirst}{rgb}{1, 0.7, 0.7} % red
+\definecolor{tabsecond}{rgb}{1, 0.85, 0.7} % orange
+\definecolor{tabthird}{rgb}{1, 1, 0.7} % yellow
+\definecolor{lgg}{rgb}{0.75, 0.95, 0.65} % 定义一个名为 lightgrassgreen 的颜色
+
+%\setlength{\bibitemsep}{3bp}
+%\renewcommand*{\bibfont}{\zihao{5}\linespread{1.27}\selectfont}
+
+\siithssinfo{
+	ctitle = {基于\LaTeX 的开题报告撰写模板},
+	etitle = {A \LaTeX ~Template for Doctoral Research Proposal},
+	cauthor = {汪文涵}, eauthor = {Wenhan Wang},
+	studentid = {240108120102},
+	date = {\zhdigits{2025} 年 \zhnumber{12} 月},
+	% 根据报告实际日期修改
+	cmajor = {计算机应用技术}, emajor = {Computer Application Technology},
+	type = {thesis}, % thesis 或 practice, 对应“学位论文”或“实践成果”
+	mentorleader = {龙创创},
+	mentormembers = {龙智智~~龙慧慧},
+	ckeywords = {关键词1，关键词2，关键词3},
+	ekeywords = {Key Words 1, Key Words 2, Key Words 3}
+}
+%\addbibresource{ref.bib}
+
+
+\begin{document}
+	\frontmatter
+	\pagestyle{empty}
+	\maketitle
+
+	\include{chap/chap0-abstract} % 摘要
+
+    \cleardoublepage
+	\pagestyle{plain}
+	\setcounter{page}{0}
+	\pagenumbering{Roman}
+	\tableofcontents
+
+	\mainmatter
+	\include{chap/chap1-intro}
+	\include{chap/chap2-work1}
+	\include{chap/chap3-work2}
+	\include{chap/chap4-work3}
+	\include{chap/chap5-future}
+	\include{chap/chap6-papers}
+
+    \appendix
+    {
+    \bibliographystyle{cvpr} % 参考文献使用CVPR会议引用格式
+    \bibliography{ref}
+    }	
+    
+	\backmatter
+
+\end{document}
+
+% vim:ts=4:sw=4

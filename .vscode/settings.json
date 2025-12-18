@@ -1,0 +1,51 @@
+{
+    // ============ 自动编译 ============
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.outDir": "%DIR%/out", // 输出到子文件夹（可选）
+    "latex-workshop.latex.clean.fileTypes": [
+      "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot",
+      "*.out", "*.toc", "*.acn", "*.acr", "*.alg", "*.glg", "*.glo",
+      "*.gls", "*.fls", "*.log", "*.fdb_latexmk"
+    ],
+  
+    // ============ 编译方案 ============
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "xelatex -> bibtex -> xelatex*2",  // 替换为 xelatex
+        "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+      },
+      {
+        "name": "xelatex",
+        "tools": ["xelatex"]
+      }
+    ],
+    "latex-workshop.latex.tools": [
+      {
+        "name": "xelatex",  // 新增 xelatex 工具配置
+        "command": "xelatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        "name": "bibtex",
+        "command": "bibtex",
+        "args": ["%DOCFILE%"]
+      }
+    ],
+  
+    // ============ PDF 预览 ============
+    "latex-workshop.view.pdf.viewer": "tab",  // 内置标签页中预览
+    "latex-workshop.view.pdf.invert": 0,      // 不反色（可选）
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click", // 双击同步
+    "latex-workshop.synctex.afterBuild.enabled": true,
+  
+    // ============ 跳转设置 ============
+    "latex-workshop.synctex.synctexjs.enabled": true,
+    "latex-workshop.view.pdf.ref.viewer": "tab",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.recipe.default": "lastUsed"
+}
